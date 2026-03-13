@@ -1,10 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
@@ -22,15 +26,15 @@
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
-     keyMap = "de";
+    keyMap = "de";
   };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   services.xserver = {
-      enable = true;
-      autoRepeatDelay = 200;
-      autoRepeatInterval = 35;
+    enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
   };
 
   # Configure keymap in X11
@@ -51,11 +55,14 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.leander = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
-  ];
+    ];
   };
 
   security.sudo.wheelNeedsPassword = true;
@@ -84,6 +91,7 @@
     git
     ghostty
     zsh
+    networkmanagerapplet
   ];
 
   fonts = {
@@ -92,17 +100,23 @@
       noto-fonts-color-emoji
     ];
     fontconfig = {
-        enable = true;
-        defaultFonts = {
-            sansSerif = [ "Noto Sans" ];
-            serif = [ "Noto Serif" "DejaVu Serif" ];
-            monospace = [ "JetBrains Mono" ];
-            emoji = [ "Noto Color Emoji" ];
-        };
+      enable = true;
+      defaultFonts = {
+        sansSerif = [ "Noto Sans" ];
+        serif = [
+          "Noto Serif"
+          "DejaVu Serif"
+        ];
+        monospace = [ "JetBrains Mono" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
     };
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -117,4 +131,3 @@
 
   system.stateVersion = "25.11";
 }
-
