@@ -10,20 +10,24 @@
     ./hardware-configuration.nix
   ];
 
+  # Boot stuff
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   boot.loader.efi.efiSysMountPoint = "/boot";
 
+  # Hardware stuff
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  # Networking
   networking.hostName = "leander";
   networking.networkmanager.enable = true;
 
-  # services.resolved.enable = true;
-
+  # Config stuff
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
     keyMap = "de";
@@ -71,6 +75,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Screen stuff
   services.displayManager.ly.enable = true;
   services.displayManager.defaultSession = "start-hyprland";
   programs.hyprland = {
@@ -92,8 +97,10 @@
     ghostty
     zsh
     networkmanagerapplet
+    pavucontrol
   ];
 
+  # Fonts
   fonts = {
     packages = with pkgs; [
       nerd-fonts.jetbrains-mono
@@ -122,12 +129,6 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.settings.KbdInteractiveAuthentication = false;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "25.11";
 }
