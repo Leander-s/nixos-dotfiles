@@ -1,20 +1,30 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 let
-dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
-create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-configs = {
+  dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
+  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
     hypr = "hypr";
     nvim = "nvim";
     waybar = "waybar";
     mako = "mako";
     ghostty = "ghostty";
     tmux = "tmux";
-};
+  };
 in
 {
+  imports = [ inputs.zen-browser.homeModules.twilight ];
   home.username = "leander";
   home.homeDirectory = "/home/leander";
   home.stateVersion = "25.11";
+
+  programs.zen-browser = {
+    enable = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -26,9 +36,14 @@ in
   };
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
-      source = create_symlink "${dotfiles}/${subpath}";
-      recursive = true;
+    source = create_symlink "${dotfiles}/${subpath}";
+    recursive = true;
   }) configs;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   home.packages = with pkgs; [
     fzf
@@ -40,6 +55,9 @@ in
     kdePackages.dolphin
     nodejs
     python3
+    python3Packages.pip
+    python3Packages.pynvim
+    python3Packages.python-lsp-server
     ripgrep
     swaybg
     discord
@@ -60,9 +78,12 @@ in
     nwg-look
     papirus-icon-theme
     sshfs-fuse
-    nil
-    nixpkgs-fmt
     vicinae
+    nodePackages.typescript
+    tree-sitter
+    clang-tools
+    clang
+    lua-language-server
   ];
 
   programs.git.enable = true;
