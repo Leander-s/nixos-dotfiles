@@ -9,7 +9,6 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     hypr = "hypr";
-    nvim = "nvim";
     waybar = "waybar";
     mako = "mako";
     ghostty = "ghostty";
@@ -17,10 +16,15 @@ let
   };
 in
 {
-  imports = [ inputs.zen-browser.homeModules.twilight ];
+  imports = [
+    inputs.zen-browser.homeModules.twilight
+    ../../modules/home-manager/nvim.nix
+  ];
   home.username = "leander";
   home.homeDirectory = "/home/leander";
   home.stateVersion = "25.11";
+
+  programs.home-manager.enable = true;
 
   programs.zen-browser = {
     enable = true;
@@ -40,11 +44,6 @@ in
     recursive = true;
   }) configs;
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
   home.packages = with pkgs; [
     fzf
     hyprshutdown
@@ -56,8 +55,6 @@ in
     nodejs
     python3
     python3Packages.pip
-    python3Packages.pynvim
-    python3Packages.python-lsp-server
     ripgrep
     swaybg
     discord
@@ -68,10 +65,7 @@ in
     unzip
     rustc
     cargo
-    rustfmt
     clippy
-    rust-analyzer
-    fd
     gh
     google-chrome
     btop
@@ -80,10 +74,8 @@ in
     sshfs-fuse
     vicinae
     nodePackages.typescript
-    tree-sitter
     clang-tools
     clang
-    lua-language-server
   ];
 
   programs.git.enable = true;

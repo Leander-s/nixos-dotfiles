@@ -35,7 +35,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.leander = import ./home.nix;
+              users.leander = import ./home/leander;
               backupFileExtension = "backup";
               extraSpecialArgs = { inherit inputs; };
             };
