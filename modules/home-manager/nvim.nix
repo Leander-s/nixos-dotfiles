@@ -30,6 +30,7 @@ in
       rustfmt
       lua-language-server
       tree-sitter
+      marksman
     ];
   };
 
