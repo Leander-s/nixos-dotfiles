@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  extraPackages = with pkgs; [
+  home.packages = with pkgs; [
     teams-for-linux
   ];
 
