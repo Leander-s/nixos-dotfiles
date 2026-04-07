@@ -19,6 +19,7 @@ in
   imports = [
     inputs.zen-browser.homeModules.twilight
     ../../modules/home-manager/nvim.nix
+    ../../modules/home-manager/work.nix
   ];
   home.username = "leander";
   home.homeDirectory = "/home/leander";
