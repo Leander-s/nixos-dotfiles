@@ -24,6 +24,7 @@
   # Networking
   networking.hostName = "leander";
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
 
   # Config stuff
   # Set your time zone.
