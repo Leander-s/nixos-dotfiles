@@ -79,7 +79,12 @@ in
     clang
   ];
 
-  programs.git.enable = true;
+  programs.git = {
+  	enable = true;
+	settings.user.name = "Leander Funken";
+	settings.user.email = "leander.funken@gmail.com";
+	settings.credential.helper = "store";
+  };
 
   home.pointerCursor = {
     name = "Bibata-Modern-Classic";
