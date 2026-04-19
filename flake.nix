@@ -24,12 +24,13 @@
       zen-browser,
       ...
     }@inputs:
-    {
-      nixosConfigurations.leander = nixpkgs.lib.nixosSystem {
+    let
+      mkHost = hostname: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
-          ./configuration.nix
-
+          ./modules/common.nix
+          ./hosts/${hostname}
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -42,5 +43,10 @@
           }
         ];
       };
+      in {
+          nixosConfigurations = {
+              desktop = mkHost "desktop";
+              laptop = mkHost "laptop";
+          };
     };
 }
