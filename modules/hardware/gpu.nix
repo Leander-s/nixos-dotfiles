@@ -34,8 +34,8 @@ in {
         nvidiaSettings = true;
         powerManagement.enable = false;
         powerManagement.finegrained = false;
-        open = cfg.nvidia.open;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        open = false;
+        package = config.boot.kernelPackages.nvidiaPackages.production;
       };
     })
 
