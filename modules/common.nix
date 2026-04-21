@@ -5,6 +5,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.grub.useOSProber = true;
 
   # Hardware stuff
   hardware.bluetooth.enable = true;

@@ -31,6 +31,8 @@ in
       lua-language-server
       tree-sitter
       marksman
+      nil
+      nixfmt
     ];
   };
 
