@@ -6,7 +6,6 @@
 }:
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
-  localfiles = "${config.home.homeDirectory}/nixos-dotfiles/local";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     hypr = "hypr";
@@ -14,9 +13,6 @@ let
     mako = "mako";
     ghostty = "ghostty";
     tmux = "tmux";
-  };
-  local = {
-    bin = "bin";
   };
 in
 {
@@ -56,11 +52,6 @@ in
     source = create_symlink "${dotfiles}/${subpath}";
     recursive = true;
   }) configs;
-
-  xdg.localFile = builtins.mapAttrs (name: subpath: {
-    source = create_symlink "${localfiles}/${subpath}";
-    recursive = true;
-  }) local;
 
   home.packages = with pkgs; [
     fzf
