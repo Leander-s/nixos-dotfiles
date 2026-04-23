@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+ 
+tmux_running=$(pgrep tmux)
+ 
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s "leander" -c ~
+    exit 0
+fi
+ 
+tmux attach
