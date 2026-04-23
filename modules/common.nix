@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   # Boot stuff
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
@@ -46,6 +52,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
   programs.zsh.enable = true;
+  programs.bash.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.leander = {
@@ -82,6 +89,7 @@
     neovim
     vim
     gcc
+    clang
     wget
     curl
     git
@@ -121,4 +129,3 @@
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.settings.KbdInteractiveAuthentication = false;
 }
-
