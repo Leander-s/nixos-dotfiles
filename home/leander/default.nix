@@ -35,7 +35,15 @@ in
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "fzf" "gh" "rust" "ssh" "systemd" "tmux" ];
+      plugins = [
+        "git"
+        "fzf"
+        "gh"
+        "rust"
+        "ssh"
+        "systemd"
+        "tmux"
+      ];
       theme = "robbyrussell";
     };
   };
@@ -68,6 +76,7 @@ in
     cargo
     clippy
     gh
+    claude-code
     google-chrome
     btop
     nwg-look
@@ -80,10 +89,11 @@ in
   ];
 
   programs.git = {
-  	enable = true;
-	settings.user.name = "Leander Funken";
-	settings.user.email = "leander.funken@gmail.com";
-	settings.credential.helper = "store";
+    enable = true;
+    settings.user.name = "Leander Funken";
+    settings.user.email = "leander.funken@gmail.com";
+    settings.credential.helper = "store";
+    settings.defaultBranch = "main";
   };
 
   home.pointerCursor = {

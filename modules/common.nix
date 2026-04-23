@@ -89,7 +89,6 @@
     neovim
     vim
     gcc
-    clang
     wget
     curl
     git

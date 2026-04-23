@@ -11,10 +11,14 @@ in
     viAlias = true;
     vimAlias = true;
 
+    plugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
+
     # Useful if mason / LSP servers / formatters need tools from PATH
     extraPackages = with pkgs; [
       git
       gcc
+      clang
+      clang-tools
       ripgrep
       fd
       unzip
@@ -29,6 +33,7 @@ in
       rust-analyzer
       rustfmt
       lua-language-server
+      cmake-language-server
       tree-sitter
       marksman
       nil
