@@ -1,0 +1,145 @@
+/***************
+ * Color tokens (GTK CSS)
+ ***************/
+@define-color bg rgba(20, 22, 26, 0.82);
+/* pill background */
+@define-color bg_alt rgba(32, 35, 40, 0.82);
+/* alt pill background */
+@define-color fg #b0b0c0;
+/* bright text */
+@define-color fg_muted #606060;
+/* neutral (light grey) */
+
+@define-color good #7ad07a;
+@define-color warn #f5c06a;
+@define-color crit #ef6a6a;
+
+/********
+ * Bar
+ ********/
+window#waybar {
+    background-color: transparent;
+    /* transparent bar */
+    color: @fg_muted;
+    /* neutral text by default */
+    font-family: "JetbrainsMono Nerd Font";
+    font-size: 12pt;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+}
+
+/************************
+ * Common module "pill"
+ ************************/
+#workspaces button,
+#backlight,
+#battery,
+#power-profiles-daemon,
+#clock,
+#wireplumber,
+#network,
+#custom-ethernet,
+#cpu,
+#memory,
+#temperature,
+#tray {
+    background-color: @bg;
+    color: @fg;
+    padding: 3px 10px;
+    border-radius: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin: 2px 2px;
+}
+
+/* Center clock uses alt background for a tiny visual hint */
+#clock {
+    background-color: @bg_alt;
+}
+
+/******************
+ * Workspaces
+ ******************/
+#workspaces {
+    background: transparent;
+}
+
+#workspaces button {
+    padding: 6px 8px;
+    background-color: @bg;
+    color: @fg_muted;
+}
+
+#workspaces button:hover {
+    background-color: rgba(20, 22, 26, 0.90);
+}
+
+#workspaces button.active {
+    color: @good;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+#workspaces button.urgent {
+    color: @crit;
+    border: 1px solid @crit;
+}
+
+/**********************
+ * State-driven colours
+ * (text becomes coloured only when appropriate)
+ **********************/
+#temperature.warning {
+    color: #4499ff;
+}
+
+#cpu.good,
+#memory.good {
+    color: @good;
+}
+
+#cpu.warning,
+#memory.warning {
+    color: @warn;
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+    color: @crit;
+}
+
+/* Temperature critical: subtle emphasis */
+#temperature.critical {
+    font-weight: 600;
+}
+
+/* Network */
+#network.disconnected {
+    color: @crit;
+}
+
+/* Speakers: dim when muted */
+#wireplumber.muted {
+    opacity: 0.75;
+}
+
+/****************
+ * Layout polish
+ ****************/
+.modules-right>*:first-child,
+.modules-left>*:first-child {
+    margin-left: 0;
+}
+
+.modules-right>*:last-child,
+.modules-left>*:last-child {
+    margin-right: 0;
+}
+
+/* Tooltips */
+tooltip {
+    background-color: rgba(24, 26, 31, 0.95);
+    color: @fg;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}

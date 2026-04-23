@@ -1,0 +1,6 @@
+[submodule "copilot.vim"]
+	path = copilot.vim
+	url = git@github.com:github/copilot.vim.git
+[submodule "pack/github/start/copilot.vim"]
+	path = pack/github/start/copilot.vim
+	url = git@github.com:github/copilot.vim.git

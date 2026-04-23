@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+ip=$(curl -fsS https://api.ipify.org)
+if [ -n "$ip" ]; then
+    printf '{"text":"IP: %s", "tooltip":""}\n' "$ip"
+else
+    printf '{"text":"Offline", "tooltip":""}\n'
+fi

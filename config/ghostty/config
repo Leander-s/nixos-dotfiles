@@ -1,0 +1,57 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /home/leander/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+font-family = JetBrains Mono Nerd Font
+# font-family = Cascadia Mono Nerd Font
+# font-family = Hack Nerd Font
+# font-family = MesloLGS Nerd Font Mono
+font-size = 20
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+theme = Rose Pine
+# theme = TokyoNight Night
+# theme = Dracula
+# theme = Nord
+# theme = Everforest Dark   Hard
+# theme = Catppuccin Frappe
+
+background-opacity = 0.0
+
+confirm-close-surface = false
+
+keybind = shift+ctrl+r=reload_config
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+# cursor-style = bar
