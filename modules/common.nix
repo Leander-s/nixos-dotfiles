@@ -25,8 +25,7 @@
       wifi.powersave = false;
       plugins = with pkgs; [
         networkmanager-openvpn
-        networkmanager-openconnect
-        networkmanager-l2tp
+        networkmanager-strongswan
       ];
     };
   };
