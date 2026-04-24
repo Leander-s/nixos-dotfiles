@@ -90,10 +90,12 @@ in
 
   programs.git = {
     enable = true;
-    settings.user.name = "Leander Funken";
-    settings.user.email = "leander.funken@gmail.com";
-    settings.credential.helper = "store";
-    settings.defaultBranch = "main";
+    settings = {
+      user.name = "Leander Funken";
+      user.email = "leander.funken@gmail.com";
+      credential.helper = "store";
+      init.defaultBranch = "main";
+    };
   };
 
   home.pointerCursor = {
