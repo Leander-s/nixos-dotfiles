@@ -18,9 +18,18 @@
   services.blueman.enable = true;
 
   # Networking
-  networking.hostName = "leander";
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = false;
+  networking = {
+    hostName = "leander";
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+      plugins = with pkgs; [
+        networkmanager-openvpn
+        networkmanager-openconnect
+        networkmanager-l2tp
+      ];
+    };
+  };
 
   # Config stuff
   # Set your time zone.
