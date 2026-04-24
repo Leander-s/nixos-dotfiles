@@ -18,6 +18,7 @@
   services.blueman.enable = true;
 
   # Networking
+  services.resolved.enable = true;
   networking = {
     hostName = "leander";
     networkmanager = {
