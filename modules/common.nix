@@ -30,6 +30,16 @@
       ];
     };
   };
+  # empty strongswan.conf so it finds one
+  environment.etc."strongswan.conf".text = ''
+    charon-nm {
+        plugins {
+            eap-peap {
+                load = no
+            }
+        }
+    }
+  '';
 
   # Config stuff
   # Set your time zone.
