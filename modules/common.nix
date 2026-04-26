@@ -105,6 +105,7 @@
     hyprland
     hyprshutdown
     hyprlock
+    hyprshot
     hyprpaper
     waybar
     fzf
