@@ -54,35 +54,21 @@ in
   }) configs;
 
   home.packages = with pkgs; [
-    fzf
-    hyprshutdown
-    hyprlock
-    btop
-    mako
-    tmux
+    unzip
+    rustc
+    cargo
     kdePackages.dolphin
     nodejs
     python3
     python3Packages.pip
     ripgrep
-    swaybg
     discord
-    brightnessctl
     spotify
-    wl-clipboard
     micromamba
-    unzip
-    rustc
-    cargo
     clippy
     gh
     claude-code
-    google-chrome
-    btop
-    nwg-look
-    papirus-icon-theme
     sshfs-fuse
-    vicinae
     nodePackages.typescript
     clang-tools
     clang

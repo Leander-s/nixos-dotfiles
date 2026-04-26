@@ -103,15 +103,27 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     hyprland
-    waybar
+    hyprshutdown
+    hyprlock
     hyprpaper
+    waybar
+    fzf
+    tmux
+    wl-clipboard
     neovim
+    ghostty
     vim
+    btop
+    mako
+    google-chrome
+    nwg-look
+    papirus-icon-theme
+    vicinae
+    brightnessctl
     gcc
     wget
     curl
     git
-    ghostty
     zsh
     networkmanagerapplet
     pavucontrol
