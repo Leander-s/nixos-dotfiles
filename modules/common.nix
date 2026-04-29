@@ -30,6 +30,16 @@
       ];
     };
   };
+  # empty strongswan.conf so it finds one
+  environment.etc."strongswan.conf".text = ''
+    charon-nm {
+        plugins {
+            eap-peap {
+                load = no
+            }
+        }
+    }
+  '';
 
   # Config stuff
   # Set your time zone.
@@ -93,15 +103,28 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     hyprland
-    waybar
+    hyprshutdown
+    hyprlock
+    hyprshot
     hyprpaper
+    waybar
+    fzf
+    tmux
+    wl-clipboard
     neovim
+    ghostty
     vim
+    btop
+    mako
+    google-chrome
+    nwg-look
+    papirus-icon-theme
+    vicinae
+    brightnessctl
     gcc
     wget
     curl
     git
-    ghostty
     zsh
     networkmanagerapplet
     pavucontrol
