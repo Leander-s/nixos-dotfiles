@@ -54,6 +54,7 @@ in
   }) configs;
 
   home.packages = with pkgs; [
+    jq
     unzip
     rustc
     cargo
