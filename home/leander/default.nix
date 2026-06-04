@@ -54,7 +54,6 @@ in
   }) configs;
 
   home.packages = with pkgs; [
-    power-profiles-daemon
     jq
     unzip
     rustc
