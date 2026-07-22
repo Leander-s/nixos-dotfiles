@@ -100,6 +100,8 @@
     xwayland.enable = true;
   };
 
+  services.power-profiles-daemon.enable = true;
+
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     hyprland
