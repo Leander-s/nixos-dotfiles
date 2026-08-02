@@ -20,7 +20,7 @@
     "backlight",
     "battery",
     "power-profiles-daemon",
-    "tray",
+    "tray"
   ],
 
   "hyprland/workspaces": {

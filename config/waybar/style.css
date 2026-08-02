@@ -47,7 +47,7 @@ window#waybar {
     background-color: @bg;
     color: @fg;
     padding: 3px 10px;
-    border-radius: 1px;
+    border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.06);
     margin: 2px 2px;
 }
@@ -68,6 +68,7 @@ window#waybar {
     padding: 6px 8px;
     background-color: @bg;
     color: @fg_muted;
+    border-radius: 8px;
 }
 
 #workspaces button:hover {
