@@ -109,6 +109,7 @@
     hyprlock
     hyprshot
     hyprpaper
+    hypridle
     waybar
     fzf
     tmux
