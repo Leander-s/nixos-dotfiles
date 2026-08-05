@@ -28,7 +28,7 @@ return {
 						},
 						right = {
 							border = nil,
-							preview = "leaf",
+							preview = "always",
 						},
 					},
 				},

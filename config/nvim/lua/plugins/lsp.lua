@@ -74,6 +74,8 @@ return {
 				},
 			})
 
+			local telescope = require("telescope.builtin")
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
 					local bufnr = args.buf
@@ -82,6 +84,11 @@ return {
 					vim.keymap.set("n", "gn", function()
 						require("nvim-navbuddy").open()
 					end, vim.tbl_extend("force", opts, { desc = "Navbuddy" }))
+
+					vim.keymap.set("n", "<leader>gr", telescope.lsp_references)
+					vim.keymap.set("n", "<leader>gd", telescope.lsp_definitions)
+					vim.keymap.set("n", "<leader>gi", telescope.lsp_implementations)
+					vim.keymap.set("n", "<leader>gy", telescope.lsp_type_definitions)
 
 					vim.keymap.set(
 						"n",
