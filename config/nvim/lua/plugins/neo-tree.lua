@@ -14,14 +14,19 @@ return {
 
 	keys = {
 		{
-			"e",
-			"<cmd>Neotree filesystem toggle reveal left<cr>",
-			desc = "Toggle file explorer",
-		},
-		{
 			"<leader>e",
 			"<cmd>Neotree filesystem toggle reveal float<cr>",
 			desc = "Toggle floating file explorer",
+		},
+		{
+			"<leader>b",
+			"<cmd>Neotree buffers toggle reveal float<cr>",
+			desc = "Toggle buffer explorer",
+		},
+		{
+			"<leader>ge",
+			"<cmd>Neotree git_status toggle reveal float<cr>",
+			desc = "Toggle git explorer",
 		},
 	},
 
