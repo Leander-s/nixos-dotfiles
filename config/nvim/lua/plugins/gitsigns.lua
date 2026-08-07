@@ -4,6 +4,13 @@ return {
 	config = true,
 	keys = {
 		{
+			"<leader>hp",
+			function()
+				require("gitsigns").preview_hunk()
+			end,
+			desc = "Preview Git Hunk",
+		},
+		{
 			"<leader>gh",
 			function()
 				require("gitsigns").toggle_current_line_blame()
