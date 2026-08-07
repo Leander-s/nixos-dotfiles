@@ -14,8 +14,6 @@ return {
 			{ "<leader>gL", "<cmd>Git push --force-with-lease<cr>", desc = "Git force push" },
 			{ "<leader>gP", "<cmd>Git push<cr>", desc = "Git push" },
 			{ "<leader>gp", "<cmd>Git pull<cr>", desc = "Git pull" },
-
-			{ "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
 		},
 	},
 }

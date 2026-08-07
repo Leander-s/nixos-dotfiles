@@ -85,17 +85,11 @@ return {
 						require("nvim-navbuddy").open()
 					end, vim.tbl_extend("force", opts, { desc = "Navbuddy" }))
 
-					vim.keymap.set("n", "<leader>gr", telescope.lsp_references)
-					vim.keymap.set("n", "<leader>gd", telescope.lsp_definitions)
-					vim.keymap.set("n", "<leader>gi", telescope.lsp_implementations)
-					vim.keymap.set("n", "<leader>gy", telescope.lsp_type_definitions)
+					vim.keymap.set("n", "gr", telescope.lsp_references)
+					vim.keymap.set("n", "gd", telescope.lsp_definitions)
+					vim.keymap.set("n", "gi", telescope.lsp_implementations)
+					vim.keymap.set("n", "gy", telescope.lsp_type_definitions)
 
-					vim.keymap.set(
-						"n",
-						"gd",
-						vim.lsp.buf.definition,
-						vim.tbl_extend("force", opts, { desc = "Goto definition" })
-					)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover" }))
 					vim.keymap.set(
 						"n",
