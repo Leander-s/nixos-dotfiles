@@ -36,6 +36,13 @@ return {
 				end,
 				desc = "Grep string",
 			},
+			{
+				"<leader>pg",
+				function()
+					telescope.git_branches()
+				end,
+				desc = "Grep git branch",
+			},
 		},
 	},
 }

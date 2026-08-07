@@ -8,6 +8,7 @@ return {
 				color = color or "rose-pine"
 				vim.cmd.colorscheme(color)
 				vim.opt.colorcolumn = ""
+				vim.opt.fillchars:append({ eob = " " }) -- Remove the ~ from end of buffer
 
 				local transparent_groups = {
 					"TelescopeBorder",

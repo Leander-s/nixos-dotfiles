@@ -1,4 +1,3 @@
-print("Remapped")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
@@ -29,5 +28,5 @@ vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format()
 end)
 
-vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>")
+vim.keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })

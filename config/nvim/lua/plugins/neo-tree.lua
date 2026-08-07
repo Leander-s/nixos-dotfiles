@@ -75,7 +75,6 @@ return {
 				["gu"] = "git_unstage_file",
 				["gt"] = "git_toggle_file_stage",
 				["A"] = "git_add_all",
-				["U"] = "git_unstage_all",
 				["R"] = "git_revert_file",
 				["gc"] = "git_commit",
 				["gp"] = "git_push",
