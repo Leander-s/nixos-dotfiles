@@ -70,6 +70,17 @@ return {
 		},
 
 		window = {
+			mappings = {
+				["ga"] = "git_add_file",
+				["gu"] = "git_unstage_file",
+				["gt"] = "git_toggle_file_stage",
+				["A"] = "git_add_all",
+				["U"] = "git_unstage_all",
+				["R"] = "git_revert_file",
+				["gc"] = "git_commit",
+				["gp"] = "git_push",
+				["gg"] = "git_commit_and_push",
+			},
 			width = 25,
 
 			popup = {
@@ -79,7 +90,7 @@ return {
 					height = "75%",
 				},
 				border = {
-					style = "none",
+					style = "rounded",
 				},
 			},
 		},
