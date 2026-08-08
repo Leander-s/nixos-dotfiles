@@ -9,7 +9,7 @@
   "spacing": 8,
 
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
+  "modules-center": ["custom/workmode", "clock"],
   "modules-right": [
     "network",
     "custom/ethernet",
@@ -57,6 +57,13 @@
     "on-click": "pavucontrol",
     "on-scroll-up": "wpctl set-sink-volume @DEFAULT_SINK@ +2%",
     "on-scroll-down": "wpctl set-sink-volume @DEFAULT_SINK@ -2%"
+  },
+
+  "custom/workmode": {
+      "exec": "~/.config/waybar/scripts/work-mode-status",
+      "return-type": "json",
+      "interval": 1,
+      "tooltip": true,
   },
 
   "custom/ethernet": {
@@ -137,6 +144,7 @@
       "format-alt": "{time} {icon}",
       "format-icons": ["", "", "", "", ""]
   },
+
   "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",

@@ -13,7 +13,7 @@ return {
 
 			return {
 				window = {
-					border = "none",
+					border = "rounded",
 					size = "100%",
 					position = "50%",
 					scrolloff = nil,

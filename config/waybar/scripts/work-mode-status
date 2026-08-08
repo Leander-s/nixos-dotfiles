@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+active="$(timew get dom.active)"
+
+total_seconds="$(
+    timew export :day work |
+    jq --arg now "$(date -u +%Y%m%dT%H%M%SZ)" '
+        map(
+            (.start | strptime("%Y%m%dT%H%M%SZ") | mktime) as $start |
+            ((.end // $now) | strptime("%Y%m%dT%H%M%SZ") | mktime) as $end |
+            $end - $start
+        )
+        | add // 0
+    '
+)"
+
+hours=$((total_seconds / 3600))
+minutes=$(((total_seconds % 3600) / 60))
+seconds=$((total_seconds % 60))
+
+if [[ "$active" == "1" ]]; then
+    printf '{"text":"󰔟 WORK %02d:%02d:%02d","class":"active","tooltip":"Work mode active"}\n' \
+        "$hours" "$minutes" "$seconds"
+else
+    printf '{"text":"󰔟 %02d:%02d:%02d","class":"inactive","tooltip":"Work time today"}\n' \
+        "$hours" "$minutes" "$seconds"
+fi

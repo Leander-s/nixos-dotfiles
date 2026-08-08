@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$(timew get dom.active)" == "1" ]]; then
+    timew stop
+else
+    timew start work
+fi
