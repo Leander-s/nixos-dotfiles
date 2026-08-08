@@ -40,7 +40,7 @@ theme = Rose Pine
 # theme = Everforest Dark   Hard
 # theme = Catppuccin Frappe
 
-background-opacity = 0.0
+background-opacity = 0.4
 
 confirm-close-surface = false
 
