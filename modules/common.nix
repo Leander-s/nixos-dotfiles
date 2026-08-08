@@ -79,6 +79,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "docker"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -98,6 +99,11 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  virtualisation.docker = {
+    enableOnBoot = true;
+    enable = true;
   };
 
   services.power-profiles-daemon.enable = true;
@@ -131,6 +137,8 @@
     zsh
     networkmanagerapplet
     pavucontrol
+    devcontainer
+    copilot-language-server
   ];
 
   # Fonts

@@ -46,6 +46,10 @@ in
       ];
       theme = "robbyrussell";
     };
+    shellAliases = {
+      rnvim = "devcontainer exec --workspace-folder . nvim";
+      rbuild = "devcontainer exec --workspace-folder . ./scripts/build_no_cuda.sh";
+    };
   };
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
