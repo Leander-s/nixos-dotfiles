@@ -27,6 +27,11 @@ in
 
   programs.home-manager.enable = true;
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.zen-browser = {
     enable = true;
   };
