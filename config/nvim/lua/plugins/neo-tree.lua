@@ -14,17 +14,17 @@ return {
 
 	keys = {
 		{
-			"<leader>e",
+			"<leader>pv",
 			"<cmd>Neotree filesystem toggle reveal float<cr>",
 			desc = "Toggle floating file explorer",
 		},
 		{
-			"<leader>b",
+			"<leader>bv",
 			"<cmd>Neotree buffers toggle reveal float<cr>",
 			desc = "Toggle buffer explorer",
 		},
 		{
-			"<leader>ge",
+			"<leader>gv",
 			"<cmd>Neotree git_status toggle reveal float<cr>",
 			desc = "Toggle git explorer",
 		},
@@ -40,6 +40,21 @@ return {
 		source_selector = {
 			winbar = true,
 			statusline = false,
+		},
+
+		event_handlers = {
+			{
+				event = "file_moved",
+				handler = function(data)
+					require("snacks").rename.on_rename_file(data.source, data.destination)
+				end,
+			},
+			{
+				event = "file_renamed",
+				handler = function(data)
+					require("snacks").rename.on_rename_file(data.source, data.destination)
+				end,
+			},
 		},
 
 		filesystem = {

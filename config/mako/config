@@ -4,6 +4,7 @@ width=300
 height=100
 margin=10
 padding=10
+border-color=#cc6666ff
 border-size=1
 border-radius=8
 anchor=top-right

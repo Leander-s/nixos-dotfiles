@@ -82,6 +82,7 @@ in
     nodePackages.typescript
     clang-tools
     clang
+    lazygit
   ];
 
   programs.git = {
