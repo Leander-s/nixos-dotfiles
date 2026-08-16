@@ -4,11 +4,38 @@ return {
 	config = true,
 	keys = {
 		{
+			"<leader>hr",
+			function()
+				require("gitsigns").reset_hunk()
+			end,
+			desc = "Reset Git Hunk",
+		},
+		{
 			"<leader>hp",
 			function()
-				require("gitsigns").preview_hunk()
+				require("gitsigns").preview_hunk_inline()
 			end,
 			desc = "Preview Git Hunk",
+		},
+		{
+			"[h",
+			function()
+				if vim.wo.diff then
+					return "[h"
+				end
+				require("gitsigns").nav_hunk("prev")
+			end,
+			desc = "Nav prev hunk",
+		},
+		{
+			"]h",
+			function()
+				if vim.wo.diff then
+					return "[h"
+				end
+				require("gitsigns").nav_hunk("next")
+			end,
+			desc = "Nav next hunk",
 		},
 		{
 			"<leader>gh",
@@ -18,7 +45,15 @@ return {
 			desc = "Toggle Git Line Blame",
 		},
 		{
-			"<leader>gd",
+			"<leader>gdl",
+			function()
+				require("gitsigns").toggle_word_diff()
+				require("gitsigns").toggle_deleted()
+			end,
+			desc = "Toggle Git diff inline",
+		},
+		{
+			"<leader>gda",
 			function()
 				require("gitsigns").diffthis()
 			end,
