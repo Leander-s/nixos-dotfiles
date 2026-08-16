@@ -56,6 +56,17 @@ return {
 
 			vim.lsp.enable("clangd")
 
+			vim.lsp.config("ltex_plus", {
+				settings = {
+					ltex = {
+						language = "de",
+						additionalRules = {
+							enablePickyRules = true,
+						},
+					},
+				},
+			})
+
 			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				settings = {
