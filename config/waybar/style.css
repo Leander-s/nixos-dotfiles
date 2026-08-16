@@ -23,7 +23,7 @@ window#waybar {
     color: @fg_muted;
     /* neutral text by default */
     font-family: "JetbrainsMono Nerd Font";
-    font-size: 12pt;
+    font-size: 10pt;
     padding: 0;
     margin: 0;
     min-height: 0;
@@ -35,7 +35,6 @@ window#waybar {
 #workspaces button,
 #backlight,
 #battery,
-#power-profiles-daemon,
 #clock,
 #wireplumber,
 #network,
@@ -44,18 +43,19 @@ window#waybar {
 #memory,
 #temperature,
 #custom-workmode,
+#power-profiles-daemon,
 #tray {
     background-color: @bg;
     color: @fg;
-    padding: 3px 10px;
-    border-radius: 8px;
+    padding: 0px 8px;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    margin: 2px 2px;
+    border-radius: 8px;
 }
 
 #custom-workmode.active {
     font-weight: bold;
-    background-color: @bg_alt;
+    background-color: @crit;
+    color: @bg;
 }
 
 #custom-workmode.inactive {
@@ -75,10 +75,10 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 6px 8px;
     background-color: @bg;
     color: @fg_muted;
-    border-radius: 8px;
+    margin: 0px 2px;
+    padding: 0px 4px;
 }
 
 #workspaces button:hover {
@@ -88,6 +88,7 @@ window#waybar {
 #workspaces button.active {
     color: @good;
     border: 1px solid rgba(255, 255, 255, 0.10);
+    padding: 0px 8px;
 }
 
 #workspaces button.urgent {

@@ -1,7 +1,6 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 10,
   "margin-top": 2,
   "margin-bottom": 2,
   "margin-left": 2,
@@ -68,7 +67,7 @@
 
   "custom/ethernet": {
       "exec": "~/.config/waybar/scripts/external.ip",
-      "format": "🌍 {text}",
+      "format": " {text}",
       "interval": 50,
       "return-type": "json",
       "tooltip": true,

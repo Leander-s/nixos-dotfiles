@@ -5,14 +5,14 @@
 hl.monitor({
 	output = "DP-1",
 	mode = "highres@highrr",
-	position = "1920x0",
+	position = "auto",
 	scale = "auto",
 })
 
 hl.monitor({
 	output = "HDMI-A-1",
 	mode = "highres@highrr",
-	position = "auto",
+	position = "0x0",
 	scale = "auto",
 })
 
