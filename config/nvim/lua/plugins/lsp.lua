@@ -44,6 +44,16 @@ return {
 				capabilities = capabilities,
 			})
 
+			vim.lsp.config("texlab", {
+				settings = {
+					texlab = {
+						build = {
+							useFileList = true,
+						},
+					},
+				},
+			})
+
 			vim.lsp.config("clangd", {
 				cmd = {
 					vim.fn.exepath("clangd"),

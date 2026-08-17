@@ -26,7 +26,11 @@ return {
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VimtexEventInitPost",
 				callback = function()
-					vim.cmd("VimtexCompile!")
+					if vim.bo.filetype ~= "tex" then
+						return
+					end
+
+					vim.cmd("VimtexCompile")
 				end,
 			})
 		end,
