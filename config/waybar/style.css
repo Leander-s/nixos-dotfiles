@@ -41,6 +41,7 @@ window#waybar {
 #custom-ethernet,
 #cpu,
 #memory,
+#disk,
 #temperature,
 #custom-workmode,
 #power-profiles-daemon,
@@ -105,17 +106,20 @@ window#waybar {
 }
 
 #cpu.good,
+#disk.good,
 #memory.good {
     color: @good;
 }
 
 #cpu.warning,
+#disk.warning,
 #memory.warning {
     color: @warn;
 }
 
 #cpu.critical,
 #memory.critical,
+#disk.critical,
 #temperature.critical {
     color: @crit;
 }

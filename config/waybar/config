@@ -14,6 +14,7 @@
     "custom/ethernet",
     "cpu",
     "memory",
+    "disk",
     "temperature",
     "wireplumber",
     "backlight",
@@ -62,7 +63,7 @@
       "exec": "~/.config/waybar/scripts/work-mode-status",
       "return-type": "json",
       "interval": 1,
-      "tooltip": true,
+      "tooltip": true
   },
 
   "custom/ethernet": {
@@ -70,7 +71,7 @@
       "format": " {text}",
       "interval": 50,
       "return-type": "json",
-      "tooltip": true,
+      "tooltip": true
   },
 
   "network": {
@@ -80,7 +81,7 @@
     "format-disconnected": "󰖪",
     "tooltip-format-disconnected": "No connection",
     "interval": 3,
-    "on-click": "nm-connection-editor",
+    "on-click": "nm-connection-editor"
   },
 
   "cpu": {
@@ -91,7 +92,7 @@
       "warning": 65,
       "critical": 80
     },
-    "on-click": "ghostty -e btop",
+    "on-click": "ghostty -e btop"
   },
 
   "memory": {
@@ -102,7 +103,20 @@
       "warning": 65,
       "critical": 80
     },
-    "on-click": "ghostty -e btop",
+    "on-click": "ghostty -e btop"
+  },
+
+  "disk": {
+      "format": " {percentage_used}%",
+      "tooltip": true,
+      "tooltip-format": " {used} / {total}", 
+      "interval": 60,
+      "states": {
+          "good": 0,
+          "warning": 75,
+          "critical": 90
+      },
+      "on-click": "ghostty -e btop"
   },
 
   "temperature": {
@@ -116,7 +130,7 @@
     "critical-threshold": 70,
     "format-critical": " {temperatureC}°C",
     "interval": 1,
-    "on-click": "ghostty -e btop",
+    "on-click": "ghostty -e btop"
   },
 
   "tray": {
