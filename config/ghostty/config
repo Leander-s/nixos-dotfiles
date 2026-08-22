@@ -42,11 +42,13 @@ theme = Rose Pine
 # theme = Everforest Dark   Hard
 # theme = Catppuccin Frappe
 
-background-opacity = 0.4
+background-opacity = 0.90
 
 confirm-close-surface = false
 
 keybind = shift+ctrl+r=reload_config
+keybind = shift+ctrl+t=toggle_background_opacity
+keybind = shift+ctrl+q=toggle_quick_terminal
 #
 # # Empty values are used to reset config keys to default.
 # key =

@@ -111,7 +111,11 @@ return {
 					vim.keymap.set("n", "gi", telescope.lsp_implementations)
 					vim.keymap.set("n", "gy", telescope.lsp_type_definitions)
 
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover" }))
+					vim.keymap.set("n", "K", function()
+						vim.lsp.buf.hover({
+							border = "rounded",
+						})
+					end, vim.tbl_extend("force", opts, { desc = "Hover" }))
 					vim.keymap.set(
 						"n",
 						"<leader>vws",
@@ -160,44 +164,41 @@ return {
 	},
 
 	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		"saghen/blink.cmp",
+		version = "1.*",
+
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lua",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
-		config = function()
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-			require("luasnip.loaders.from_vscode").lazy_load()
+		opts = {
+			keymap = {
+				preset = "default",
 
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+				["<C-y>"] = { "select_and_accept" },
+				["<C-Space>"] = { "show" },
+			},
+
+			sources = {
+				default = {
+					"lsp",
+					"path",
+					"snippets",
+					"buffer",
 				},
-				sources = {
-					{ name = "path" },
-					{ name = "nvim_lsp" },
-					{ name = "nvim_lua" },
-					{ name = "luasnip", keyword_length = 2 },
-					{ name = "buffer", keyword_length = 3 },
+			},
+			completion = {
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
 				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
-					["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = cmp.mapping.complete(),
-				}),
-			})
-		end,
+			},
+
+			fuzzy = {
+				implementation = "prefer_rust_with_warning",
+			},
+		},
 	},
 }
