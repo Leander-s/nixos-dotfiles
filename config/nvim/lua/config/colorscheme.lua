@@ -16,6 +16,9 @@ local transparent_groups = {
 	"NormalFloat",
 	"FloatBorder",
 }
+vim.api.nvim_set_hl(0, "LazyNormal", {
+	bg = "#191724",
+})
 
 local function apply_overrides()
 	vim.opt.colorcolumn = ""
