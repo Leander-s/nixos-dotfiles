@@ -24,6 +24,11 @@ vim.keymap.set("n", "<leader>Y", '"+y')
 vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
+vim.keymap.set("n", "<M-+>", "<C-w>+")
+vim.keymap.set("n", "<M-->", "<C-w>-")
+
+vim.keymap.set("t", "<M-n>", "<C-\\><C-n>")
+
 vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format()
 end)
