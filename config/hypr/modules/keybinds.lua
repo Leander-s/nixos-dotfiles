@@ -32,6 +32,8 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("hypridle"))
 hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd("pkill hypridle"))
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("chamel toggle"))
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("chamel clear"))
 
 -- Move focus with mainMod + H/J/K/L
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
