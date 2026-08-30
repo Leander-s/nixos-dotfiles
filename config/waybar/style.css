@@ -89,7 +89,6 @@ window#waybar {
 #workspaces button.active {
     color: @good;
     border: 1px solid rgba(255, 255, 255, 0.10);
-    padding: 0px 8px;
 }
 
 #workspaces button.urgent {
