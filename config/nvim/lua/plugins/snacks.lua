@@ -1,165 +1,165 @@
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
-	lazy = false,
-	---@type snacks.Config
-	opts = {
-		lazygit = {
-			---@class snacks.lazygit.Config: snacks.terminal.Opts
-			---@field args? string[]
-			---@field theme? snacks.lazygit.Theme
-			-- automatically configure lazygit to use the current colorscheme
-			-- and integrate edit with the current neovim instance
-			configure = true,
-			-- extra configuration for lazygit that will be merged with the default
-			-- snacks does NOT have a full yaml parser, so if you need `"test"` to appear with the quotes
-			-- you need to double quote it: `"\"test\""`
-			config = {
-				os = { editPreset = "nvim-remote" },
-				gui = {
-					-- set to an empty string "" to disable icons
-					nerdFontsVersion = "3",
-				},
-			},
-			theme_path = vim.fs.normalize(vim.fn.stdpath("cache") .. "/lazygit-theme.yml"),
-			-- Theme for lazygit
-			theme = {
-				[241] = { fg = "Special" },
-				activeBorderColor = { fg = "MatchParen", bold = true },
-				cherryPickedCommitBgColor = { fg = "Identifier" },
-				cherryPickedCommitFgColor = { fg = "Function" },
-				defaultFgColor = { fg = "Normal" },
-				inactiveBorderColor = { fg = "FloatBorder" },
-				optionsTextColor = { fg = "Function" },
-				searchingActiveBorderColor = { fg = "MatchParen", bold = true },
-				selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
-				unstagedChangesColor = { fg = "DiagnosticError" },
-			},
-			win = {
-				style = "lazygit",
-			},
-		},
-		bigfile = { enabled = true },
-		dashboard = {
-			enabled = true,
-			preset = {
-				header = [[
-███╗      ███╗
-████╗     ███║
-█████╗    ███║
-███╚██╗   ███║
-███ ╚██╗  ███║
-███  ╚██╗ ███║
-███   ╚██╗███║
-███    ╚█████║
-███     ╚████║
-╚══      ╚═══╝
-]],
-				keys = {
-					{
-						icon = " ",
-						key = "f",
-						desc = "Find File",
-						action = ":lua Snacks.dashboard.pick('files')",
-					},
-					{
-						icon = " ",
-						key = "p",
-						desc = "Find Project",
-						action = ":lua Snacks.dashboard.pick('projects')",
-					},
-					{
-						icon = " ",
-						key = "n",
-						desc = "New File",
-						action = ":ene | startinsert",
-					},
-					{
-						icon = " ",
-						key = "g",
-						desc = "Find Text",
-						action = ":lua Snacks.dashboard.pick('live_grep')",
-					},
-					{
-						icon = " ",
-						key = "r",
-						desc = "Recent Files",
-						action = ":lua Snacks.dashboard.pick('oldfiles')",
-					},
-					{
-						icon = " ",
-						key = "c",
-						desc = "Config",
-						action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })",
-					},
-					{
-						icon = " ",
-						key = "s",
-						desc = "Restore Session",
-						section = "session",
-					},
-					{
-						icon = "󰒲 ",
-						key = "L",
-						desc = "Lazy",
-						action = ":Lazy",
-						enabled = package.loaded.lazy ~= nil,
-					},
-					{
-						icon = " ",
-						key = "q",
-						desc = "Quit",
-						action = ":qa",
-					},
-				},
-			},
-		},
-		explorer = { enabled = false },
-		indent = { enabled = false },
-		input = {
-			{
-				enabled = true,
-				icon = " ",
-				icon_hl = "SnacksInputIcon",
-				icon_pos = "left",
-				prompt_pos = "title",
-				win = { style = "input" },
-				expand = true,
-			},
-		},
-		notifier = {
-			enabled = true,
-			timeout = 3000,
-		},
-		picker = {
-			sources = {
-				colorschemes = {
-					confirm = function(picker, item)
-						local source = require("snacks.picker.config.sources").colorschemes
-
-						-- Do Snacks' normal colorscheme selection first.
-						source.confirm(picker, item)
-
-						-- Then persist the selected colorscheme.
-						require("config.colorscheme").save(item.text)
-					end,
-				},
-			},
-			enabled = true,
-		},
-		quickfile = { enabled = true },
-		scope = { enabled = true },
-		scroll = { enabled = false },
-		statuscolumn = {
-			enabled = true,
-		},
-		words = { enabled = false },
-		styles = {
-			notification = {
-				-- wo = { wrap = true } -- Wrap notifications
+	dependencies = {
+		{
+			"MaximilianLloyd/ascii.nvim",
+			dependencies = {
+				"MunifTanjim/nui.nvim",
 			},
 		},
 	},
+	lazy = false,
+	opts = function()
+		local ascii = require("ascii")
+
+		return {
+			lazygit = {
+				---@class snacks.lazygit.Config: snacks.terminal.Opts
+				---@field args? string[]
+				---@field theme? snacks.lazygit.Theme
+				-- automatically configure lazygit to use the current colorscheme
+				-- and integrate edit with the current neovim instance
+				configure = true,
+				-- extra configuration for lazygit that will be merged with the default
+				-- snacks does NOT have a full yaml parser, so if you need `"test"` to appear with the quotes
+				-- you need to double quote it: `"\"test\""`
+				config = {
+					os = { editPreset = "nvim-remote" },
+					gui = {
+						-- set to an empty string "" to disable icons
+						nerdFontsVersion = "3",
+					},
+				},
+				theme_path = vim.fs.normalize(vim.fn.stdpath("cache") .. "/lazygit-theme.yml"),
+				-- Theme for lazygit
+				theme = {
+					[241] = { fg = "Special" },
+					activeBorderColor = { fg = "MatchParen", bold = true },
+					cherryPickedCommitBgColor = { fg = "Identifier" },
+					cherryPickedCommitFgColor = { fg = "Function" },
+					defaultFgColor = { fg = "Normal" },
+					inactiveBorderColor = { fg = "FloatBorder" },
+					optionsTextColor = { fg = "Function" },
+					searchingActiveBorderColor = { fg = "MatchParen", bold = true },
+					selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
+					unstagedChangesColor = { fg = "DiagnosticError" },
+				},
+				win = {
+					style = "lazygit",
+				},
+			},
+			bigfile = { enabled = true },
+			dashboard = {
+				enabled = true,
+				preset = {
+					header = table.concat(ascii.get_random("planets", "planets"), "\n"),
+					keys = {
+						{
+							icon = " ",
+							key = "f",
+							desc = "Find File",
+							action = ":lua Snacks.dashboard.pick('files')",
+						},
+						{
+							icon = " ",
+							key = "p",
+							desc = "Find Project",
+							action = ":lua Snacks.dashboard.pick('projects')",
+						},
+						{
+							icon = " ",
+							key = "n",
+							desc = "New File",
+							action = ":ene | startinsert",
+						},
+						{
+							icon = " ",
+							key = "g",
+							desc = "Find Text",
+							action = ":lua Snacks.dashboard.pick('live_grep')",
+						},
+						{
+							icon = " ",
+							key = "r",
+							desc = "Recent Files",
+							action = ":lua Snacks.dashboard.pick('oldfiles')",
+						},
+						{
+							icon = " ",
+							key = "c",
+							desc = "Config",
+							action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })",
+						},
+						{
+							icon = " ",
+							key = "s",
+							desc = "Restore Session",
+							section = "session",
+						},
+						{
+							icon = "󰒲 ",
+							key = "L",
+							desc = "Lazy",
+							action = ":Lazy",
+							enabled = package.loaded.lazy ~= nil,
+						},
+						{
+							icon = " ",
+							key = "q",
+							desc = "Quit",
+							action = ":qa",
+						},
+					},
+				},
+			},
+			explorer = { enabled = false },
+			indent = { enabled = false },
+			input = {
+				{
+					enabled = true,
+					icon = " ",
+					icon_hl = "SnacksInputIcon",
+					icon_pos = "left",
+					prompt_pos = "title",
+					win = { style = "input" },
+					expand = true,
+				},
+			},
+			notifier = {
+				enabled = true,
+				timeout = 3000,
+			},
+			picker = {
+				sources = {
+					colorschemes = {
+						confirm = function(picker, item)
+							local source = require("snacks.picker.config.sources").colorschemes
+
+							-- Do Snacks' normal colorscheme selection first.
+							source.confirm(picker, item)
+
+							-- Then persist the selected colorscheme.
+							require("config.colorscheme").save(item.text)
+						end,
+					},
+				},
+				enabled = true,
+			},
+			quickfile = { enabled = true },
+			scope = { enabled = true },
+			scroll = { enabled = false },
+			statuscolumn = {
+				enabled = true,
+			},
+			words = { enabled = false },
+			styles = {
+				notification = {
+					-- wo = { wrap = true } -- Wrap notifications
+				},
+			},
+		}
+	end,
 	keys = {
 		-- Top Pickers & Explorer
 		{
