@@ -1,0 +1,32 @@
+[mgr]
+show_hidden = true
+
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
+
+[opener]
+set-wallpaper = [
+    { run = "set_wallpaper %s", for = "linux", desc = "Set as wallpaper" }
+]
+browser = [
+    { run = "zen %s", orphan = true, for = "linux", desc = "Open in Zen browser"}
+]
+open = [
+    { run = "xdg-open %s", for = "linux", desc = "Open with default application" }
+]
+zathura = [
+    { run = "zathura %s", orphan = true, for = "linux", desc = "Open with Zathura" }
+]
+
+[open]
+prepend_rules = [
+  { mime = "text/*", use = [ "browser", "open" ] },
+  { mime = "image/*", use = [ "set-wallpaper", "open" ] },
+  { url = "*.pdf", use = [ "zathura", "browser", "open" ] },
+]
+rules = [
+  { mime = "text/*", use = [ "browser", "open" ] },
+  { mime = "image/*", use = [ "set-wallpaper", "open" ] },
+  { mime = "application/pdf", use = [ "zathura", "browser", "open" ] },
+]
