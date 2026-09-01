@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if command -v zen-browser >/dev/null 2>&1; then
-    exec zen-browser "$@"
-elif command -v zen-twilight >/dev/null 2>&1; then
+if command -v zen-twilight >/dev/null 2>&1; then
     exec zen-twilight "$@"
+elif command -v zen-browser >/dev/null 2>&1; then
+    exec zen-browser "$@"
 elif command -v zen-beta >/dev/null 2>&1; then
     exec zen-beta "$@"
 else
