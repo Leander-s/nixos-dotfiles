@@ -15,6 +15,8 @@ local transparent_groups = {
 	"VertSplit",
 	"NormalFloat",
 	"FloatBorder",
+	"StatusLine",
+	"StatusLineNC",
 }
 vim.api.nvim_set_hl(0, "LazyNormal", {
 	bg = "#191724",
