@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+wallpaper=$1
+
+if [ -z "$wallpaper" ]; then
+    echo "Usage: $0 <path_to_wallpaper>"
+    exit 1
+fi
+
+if [ ! -f "$wallpaper" ]; then
+    echo "Error: File '$wallpaper' does not exist."
+    exit 1
+fi
+
+state=~/.local/state/hyprpaper
+mkdir -p "$state"
+
+ln -sf "$wallpaper" "$state"/current
+hyprctl hyprpaper wallpaper ,"$state"/current

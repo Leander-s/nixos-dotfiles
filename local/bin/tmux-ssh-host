@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+pane_pid="$1"
+current_command="$2"
+
+# Don't bother searching unless tmux says SSH is currently in the foreground.
+[[ "$current_command" == "ssh" ]] || exit 0
+
+find_ssh() {
+    local pid="$1"
+    local child
+
+    [[ -r "/proc/$pid/task/$pid/children" ]] || return
+
+    for child in $(<"/proc/$pid/task/$pid/children"); do
+        if [[ -r "/proc/$child/comm" ]] &&
+           [[ "$(<"/proc/$child/comm")" == "ssh" ]]; then
+            printf '%s\n' "$child"
+            return 0
+        fi
+
+        local found
+        found="$(find_ssh "$child")"
+
+        if [[ -n "$found" ]]; then
+            printf '%s\n' "$found"
+            return 0
+        fi
+    done
+}
+
+ssh_pid="$(find_ssh "$pane_pid")"
+[[ -n "$ssh_pid" ]] || exit 0
+
+# Read the existing ssh process's argv directly from /proc.
+mapfile -d '' -t args < "/proc/$ssh_pid/cmdline"
+
+# Options which consume the following argument when written separately.
+takes_argument() {
+    case "$1" in
+        -B|-b|-c|-D|-E|-e|-F|-I|-i|-J|-L|-l|-m|-O|-o|-P|-p|-Q|-R|-S|-W|-w)
+            return 0
+            ;;
+    esac
+
+    return 1
+}
+
+for ((i = 1; i < ${#args[@]}; i++)); do
+    arg="${args[i]}"
+
+    if [[ "$arg" == "--" ]]; then
+        ((i++))
+        host="${args[i]}"
+        break
+    fi
+
+    if takes_argument "$arg"; then
+        ((i++))
+        continue
+    fi
+
+    # Other -xyz arguments are SSH options, including options whose
+    # argument is attached, e.g. -p22 or -i~/.ssh/key.
+    if [[ "$arg" == -* ]]; then
+        continue
+    fi
+
+    host="$arg"
+    break
+done
+
+[[ -n "$host" ]] || exit 0
+
+# Turn user@host into just host.
+host="${host##*@}"
+
+printf '󰒋 %s\n' "$host"
