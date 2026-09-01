@@ -3,7 +3,7 @@
 ---------------------
 
 local terminal = 'ghostty -e "tmux-startup"'
-local fileManager = "dolphin"
+local fileManager = "ghostty -e 'y'"
 local menu = "vicinae toggle"
 local browser = "zen"
 local mainMod = "SUPER"
