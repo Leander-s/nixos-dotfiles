@@ -12,6 +12,9 @@ return {
 				command_palette = true,
 				long_message_to_split = true,
 			},
+			messages = {
+				view_search = false,
+			},
 
 			lsp = {
 				progress = {
