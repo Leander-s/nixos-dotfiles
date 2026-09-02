@@ -3,8 +3,8 @@
 ---------------------
 
 local terminal = 'ghostty -e "tmux-startup"'
-local fileManager = "ghostty -e 'y'"
-local menu = "vicinae toggle"
+local fileManager = "ghostty -e zsh -ic 'y'"
+local menu = "fuzzel"
 local browser = "zen"
 local mainMod = "SUPER"
 
@@ -34,6 +34,9 @@ hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd("pkill hypridle"))
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("chamel toggle"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("chamel clear"))
+hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd("bzmenu --launcher fuzzel"))
+hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("pwmenu --launcher fuzzel"))
+hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("iwmenu --launcher fuzzel"))
 
 -- Move focus with mainMod + H/J/K/L
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))

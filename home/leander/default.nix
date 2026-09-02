@@ -8,6 +8,8 @@ let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
+    fuzzel = "fuzzel";
+    yazi = "yazi";
     hypr = "hypr";
     waybar = "waybar";
     mako = "mako";
@@ -21,6 +23,9 @@ in
     ../../modules/home-manager/nvim.nix
     ../../modules/home-manager/work.nix
   ];
+
+  environment.systemPackages = [ inputs.pwmenu.packages.${pkgs.system}.default ];
+
   home.username = "leander";
   home.homeDirectory = "/home/leander";
   home.stateVersion = "25.11";
@@ -61,6 +66,11 @@ in
     source = create_symlink "${dotfiles}/${subpath}";
     recursive = true;
   }) configs;
+
+  home.file.".local/bin" = {
+    source = create_symlink "${config.home.homeDirectory}/nixos-dotfiles/local/bin";
+    recursive = true;
+  };
 
   home.packages = with pkgs; [
     jq

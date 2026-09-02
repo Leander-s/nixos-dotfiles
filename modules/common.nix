@@ -128,17 +128,16 @@
     google-chrome
     nwg-look
     papirus-icon-theme
-    vicinae
     brightnessctl
     gcc
     wget
     curl
-    git
-    zsh
     networkmanagerapplet
     pavucontrol
     devcontainer
     copilot-language-server
+    bzmenu
+    iwmenu
   ];
 
   # Fonts

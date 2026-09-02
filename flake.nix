@@ -14,6 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    pwmenu = {
+        url = "github:e-tho/pwmenu";
+    };
   };
 
   outputs =
