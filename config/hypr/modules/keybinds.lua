@@ -39,6 +39,7 @@ hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("chamel clear"))
 hl.bind(mainMod .. " + SHIFT + DOWN", hl.dsp.exec_cmd("chamel stroke-width 2"))
 hl.bind(mainMod .. " + SHIFT + UP", hl.dsp.exec_cmd("chamel stroke-width 4"))
 
+hl.bind(mainMod .. " + SHIFT + ALT + 0", hl.dsp.exec_cmd("="))
 hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd("bzmenu --launcher fuzzel"))
 hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("pwmenu --launcher fuzzel"))
 hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("iwmenu --launcher fuzzel"))
